@@ -13,14 +13,15 @@ class Store extends Connect {
   resource = 'resource';
 }
 
-new Store(api({
-    endpoint: 'https://endpoint',
-    header: (h) => {
-      h.append('Some-Key', someValue);
-    },
-    request: {
-      credentials: 'same-origin',
-    }
-  });
-)
+const source = api({
+  endpoint: 'https://endpoint',
+  header: (h) => {
+    h.append('Some-Key', someValue);
+  },
+  request: {
+    credentials: 'same-origin',
+  }
+});
+
+new Store(source);
 ```
