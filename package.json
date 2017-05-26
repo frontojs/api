@@ -1,0 +1,9 @@
+{
+  "name": "fronto-api",
+  "version": "1.0.0",
+  "description": "api object for passing into fronto-connect",
+  "main": "lib/index.js",
+  "repository": "https://github.com/frontojs/fronto-api",
+  "author": "Zack Siri",
+  "license": "MIT"
+}
