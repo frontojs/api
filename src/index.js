@@ -1,29 +1,23 @@
-const headers = () => {
-  const h = new Headers();
+export default (endpoint, options = { header: null, request: {}}) => {
+  const headers = () => {
+    const h = new Headers();
 
-  h.append('Content-Type', 'application/json');
+    h.append('Content-Type', 'application/json');
+    if (options.header) options.header(h);
+    return h;
+  };
 
-  const token = localStorage.getItem('token');
+  const request = (endpoint, method, resource, body) => {
+    const url = [endpoint, resource].join("");
+    const reqOptions = { method, headers: headers(), ...options.request };
 
-  if (token) {
-    h.append('Authorization', `Bearer ${token}`);
-  }
+    if (body) {
+      options.body = JSON.stringify(body);
+    }
 
-  return h;
-};
+    return fetch(new Request(url, reqOptions));
+  };
 
-const request = (endpoint, method, resource, body) => {
-  const url = [endpoint, resource].join("");
-  const options = { method, headers: headers() };
-
-  if (body) {
-    options.body = JSON.stringify(body);
-  }
-
-  return fetch(new Request(url, options));
-};
-
-export default (endpoint) => {
   return {
     get(_path) {
       return request(endpoint, 'GET', _path);
