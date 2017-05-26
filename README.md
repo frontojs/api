@@ -13,8 +13,8 @@ class Store extends Connect {
   resource = 'resource';
 }
 
-new Store(api(
-  'https://endpoint', {
+new Store(api({
+    url: 'https://endpoint',
     header: (h) => {
       h.append('Some-Key', someValue);
     },
