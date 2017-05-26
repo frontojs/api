@@ -1,7 +1,7 @@
 {
   "name": "fronto-api",
   "version": "1.0.0",
-  "description": "api object for passing into fronto-connect",
+  "description": "api object for making restful requests using fetch",
   "main": "lib/index.js",
   "repository": "https://github.com/frontojs/fronto-api",
   "author": "Zack Siri",
