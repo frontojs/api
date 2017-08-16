@@ -1,4 +1,4 @@
-const api = (args = {endpoint: '', header: null, request: {}}) => {
+const generate = (args = {endpoint: '', header: null, request: {}}) => {
   const headers = () => {
     const h = new Headers();
 
@@ -43,9 +43,9 @@ const api = (args = {endpoint: '', header: null, request: {}}) => {
 const scopeTo = (rootApi, scopePath) => {
   const scopedApiEndpoint = rootApi.endpoint + scopePath;
 
-  return api({
+  return generate({
     endpoint: scopedApiEndpoint, 
-    header: rootApi.hreader, 
+    header: rootApi.header,
     request: rootApi.request
   });
 }
